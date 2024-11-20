@@ -1,0 +1,5 @@
+Informazioni utili:
+
+Per accedere al pannello di amministratore le credenziali sono:
+Utente: admin
+Psw: admin
