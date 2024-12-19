@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Prenotazioni</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestione Prenotazioni - Benvenuto , {{username}}!</h1>
+        <ul id="bookings">
+            {% for booking in bookings %}
+            <li>
+                {{ booking[0] }} - {{ booking[1] }} - {{ booking[2] }} - {{ booking[3] }}
+                <form action="/delete_booking" method="post" style="display:inline;">
+                    <input type="hidden" name="booking" value="{{ booking }}">
+                    <button type="submit">Cancella</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+		<a href="/booking" class="button">Torna alla Pagina di Prenotazione</a>
+		<p></p><br>
+		<form action="/logout" method="post">
+			<button type="submit">Logout</button>
+
+    </div>
+</body>
+</html>

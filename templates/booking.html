@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Shop Prenotazioni</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    
+    <div class="container">  
+        <h1>Barber Shop Prenotazioni</h1>
+        <form action="/book" method="post">
+            
+            <label for="date">Data:</label>
+            <input type="date" id="date" name="date" required min="">
+
+
+            <label for="time">Fascia Oraria:</label>
+            <select id="time" name="time" required>
+                <option value="">-- Seleziona una fascia --</option>
+                <option value="09-10">09:00 - 10:00</option>
+                <option value="10-11">10:00 - 11:00</option>
+                <option value="11-12">11:00 - 12:00</option>
+                <option value="12-13">12:00 - 13:00</option>
+                <option value="13-14">13:00 - 14:00</option>
+                <option value="14-15">14:00 - 15:00</option>
+                <option value="15-16">15:00 - 16:00</option>
+                <option value="16-17">16:00 - 17:00</option>
+                <option value="17-18">17:00 - 18:00</option>
+            </select>
+
+
+            <button type="submit">Prenota</button>
+        </form>
+        {% block content %}
+        {% include 'message.html' %}
+        {% endblock %}
+        <a href="/view_bookings_user" class="button">Le mie prenotazioni</a>
+         <a href="/view_bookings" class="button">Pagina Amministratori</a>
+         <form action="/logout" method="post"><br>
+			<button type="submit">Logout</button>
+    </div>
+    <script>
+        // Imposta la data minima selezionabile a oggi
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+        document.getElementById('date').addEventListener('input', function() {
+        const selectedDate = new Date(this.value);
+        
+        // Controlla se il giorno selezionato è una domenica (0 è domenica)
+        if (selectedDate.getDay() === 0) {
+            alert("La prenotazione non è disponibile la domenica. Seleziona un'altra data.");
+            this.value = ''; // Resetta il campo data
+        }
+    });
+    </script>
+    
+</body>
+</html>

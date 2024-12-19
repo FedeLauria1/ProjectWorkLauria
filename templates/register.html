@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Shop Prenotazioni - Registrati</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Barber Shop Prenotazioni - Registrati</h1>
+        <form action="/register" method="post">
+            <label for="name">Username:</label>
+            <input type="username" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Registrati</button><br>
+            <a href="/login" class="button">Login</a>
+        </form>
+        {% block content %}
+        {% include 'message.html' %}
+        {% endblock %}
+    </div>
+</body>
+</html>
